@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.rabbitmqstudy.repository.AlarmRuleMapper">
+
+    <select id="queryByRuleType" resultType="com.example.rabbitmqstudy.model.AlarmRule">
+        SELECT
+            *
+        FROM
+            t_alarm_rule
+        WHERE
+            rule_type = #{ruleType}
+            <if test="typeId != null">
+                and type_id = #{typeId}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+            <if test="metric != null and metric != ''">
+                and metric = metric
+            </if>
+    </select>
+
+</mapper>
